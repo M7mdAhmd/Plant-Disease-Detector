@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Guard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Plant disease Detector</h1>
+        <p class="subtitle">Analyze the health of your plants</p>
+
+        <form id="uploadForm" method="post" action="/" enctype="multipart/form-data">
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="file-upload" name="file" accept="image/*">
+                <div class="upload-text">
+                    <p>Click or drag & drop</p>
+                    <small>PNG, JPG (Max 5MB)</small>
+                </div>
+                <img id="preview" src="" alt="Preview">
+            </div>
+            <p class="error" id="errorMsg"></p>
+            <button type="submit" id="analyzeBtn">Analyze</button>
+        </form>
+
+        {% if result %}
+        <div class="result" id="resultContainer">
+            <h2>Result</h2>
+            <p id="resultText">{{ result }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
