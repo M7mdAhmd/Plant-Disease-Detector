@@ -41,7 +41,7 @@ def predict(file):
     file_bytes = np.frombuffer(file.read(), np.uint8)
     image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
     test_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    test_image = cv2.resize(image, (224, 224))
+    test_image = cv2.resize(test_image, (224, 224))
     test_image = np.expand_dims(test_image, 0)
     test_image = preprocess_input(test_image.astype(np.float32))
     probs = model.predict(test_image)
